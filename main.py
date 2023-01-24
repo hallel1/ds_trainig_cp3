@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 
 
 def multi_class_clf(X_train, X_test, y_train):
+    print("multi_class_clf")
     clf = svm.SVC(gamma=0.001)
     clf.fit(X_train, y_train)
 
@@ -14,6 +15,7 @@ def multi_class_clf(X_train, X_test, y_train):
 
 
 def multi_class_sgd(X_train, X_test, y_train):
+    print("multi_class_sgd")
     sgd_clf = SGDClassifier(random_state=42)
     sgd_clf.fit(X_train, y_train)
 
@@ -21,6 +23,7 @@ def multi_class_sgd(X_train, X_test, y_train):
 
 
 def binary_class(X_train, X_test, y_train):
+    print("binary_class")
     sgd_clf = SGDClassifier(random_state=42)
     sgd_clf.fit(X_train, y_train)
 
@@ -46,6 +49,7 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(
         flatten_img(images), target, test_size=0.3, shuffle=True
     )
+
     y_train_5 = (y_train == 5)
     y_test_5 = (y_test == 5)
     predicted = binary_class(X_train, X_test, y_train_5)
