@@ -25,14 +25,14 @@ def main():
         flatten_img(images), target, test_size=0.3, shuffle=True
     )
 
-    multi_class_sgd(X_train, X_test, y_train)  # todo: why the results are so bad??
+    predicted = multi_class_sgd(X_train, X_test, y_train)  # todo: why the results are so bad??
     meause(y_test, predicted)
 
     # todo: why the result the same of both the training without the split here?
     X_train, X_test, y_train, y_test = train_test_split(
         flatten_img(images), target, test_size=0.3, shuffle=True
     )
-    multi_class_clf(X_train, X_test, y_train)  # todo: why the results are so bad??
+    predicted = multi_class_clf(X_train, X_test, y_train)  # todo: why the results are so bad??
     meause(y_test, predicted)
 
 
@@ -62,7 +62,6 @@ def binary_class(X_train, X_test, y_train):
 
 def meause(y_real, predicted):
     # todo: why prec anf recall are the same always?
-    print("confusion_matrix: ", confusion_matrix(y_real, predicted))
     print("Precision Score : ", precision_score(y_real, predicted, average='micro'))
     print("Recall Score : ", recall_score(y_real, predicted, average='micro'))
     no_pred = set(y_real) - set(predicted)
